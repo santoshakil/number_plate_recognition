@@ -4,12 +4,10 @@ import random
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-
-import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-
 import sqlite3
+import time
 
 
 images_dir = "data/images"
@@ -37,8 +35,6 @@ def database(time, number):
 
 
 def detect(image_path):
-
-    #image_path = "{}/{}".format(images_dir, "car_1.jpg")
 
     image = cv2.imread(image_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -99,9 +95,6 @@ def detect(image_path):
     database(t, text)
 
 
-################################################################
-
-
 class Watcher:
     DIRECTORY_TO_WATCH = images_dir
 
@@ -143,6 +136,3 @@ class Handler(FileSystemEventHandler):
 if __name__ == '__main__':
     w = Watcher()
     w.run()
-
-
-################################################################
